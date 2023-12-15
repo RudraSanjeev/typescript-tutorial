@@ -1,11 +1,17 @@
+import { useState } from "react";
+
 const Events = () => {
+  const [searchData, setSearchData] = useState("");
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log("clicked !");
+    // console.log("clicked !");
+    console.log(searchData);
+    setSearchData("");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
+    setSearchData(e.target.value);
   };
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>, id: number) => {
@@ -16,8 +22,13 @@ const Events = () => {
   return (
     <div>
       <form>
-        <input type="text" placeholder="search here" onChange={handleChange} />
-        <button onClick={handleClick}></button>
+        <input
+          type="text"
+          placeholder="search here"
+          value={searchData}
+          onChange={handleChange}
+        />
+        <button onClick={handleClick}>search</button>
       </form>
 
       <form className="post">
